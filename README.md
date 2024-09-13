@@ -1,4 +1,4 @@
-# helm-ingress-nginx
+# helm-argocd
 
 ```
 helm dependency build
