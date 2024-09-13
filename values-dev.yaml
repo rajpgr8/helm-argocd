@@ -1,0 +1,34 @@
+argo-cd:
+  nameOverride: "argocd"
+
+  applicationSet:
+    enable: false
+
+  controller:
+    name: application-controller
+    logLevel: debug
+    containerPort: 8082
+    service:
+      port: 8082
+      portName: http-controller
+      serviceAccount:
+        create: true
+        name: argocd-sa
+
+      metrics:
+        enable: true
+  dex:
+    enabled: false
+  redis-ha:
+    enabled: false
+
+  server:
+    name: server
+    replicas: 2
+    extraArgs:
+      - --insecure
+    containerPort: 8080
+    certificate:
+      enabled: false
+    ingress: 
+      enabled: true
